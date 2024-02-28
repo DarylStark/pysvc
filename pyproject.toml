@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "pysvc"
+version = "0.1.0"
+description = ""
+authors = ["Daryl Stark <daryl@dstark.nl>"]
+packages = [
+    { include = "pysvc", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.2.2"
+mypy = "^1.8.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79
+
+[tool.ruff.lint]
+exclude = ["docs/*.py"]
+select = [
+    "E",   # pycodestyle (errors)
+    "W",   # pycodestyle (warnings)
+    "PL",  # pylint
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+    "LOG", # flake8-logging
+    "Q",   # flake8-quotes
+    "ANN", # flak8-annotations
+    "ICN", # flake8-import-conventions
+    "SLF", # flake8-self
+    "TD",  # flake8-todo
+    "FIX", # flake8-fixme
+    "D",   # pydocstyle
+    "F",   # Pyflakes
+    "UP",  # pyupgrade
+    "I",   # isort
+    "N",   # pep8-naming
+]
+ignore = [
+    "PLR2004",   # magic value used in comparison
+    "ANN101",    # missing type annotation for self
+    "ANN102",    # missing type annotation for cls
+    "TD003",     # missing link
+    "TD002",     # missing author
+    "PLR0913",   # too many arguments
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = 'single'
+multiline-quotes = 'double'
+
+[tool.ruff.format]
+quote-style = 'single'
+indent-style = 'space'
+docstring-code-format = true
+exclude = ["docs/*.py"]
+
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
